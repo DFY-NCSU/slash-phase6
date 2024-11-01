@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 # postgres connection
 username = 'postgres'
-password = 'pass'
+password = '12345'
 SQLALCHEMY_DATABASE_URL = "postgresql://"+username+":"+password+"@localhost/postgres"
 # SQLALCHEMY_DATABASE_URL = os.getenv("DB_URL")
 

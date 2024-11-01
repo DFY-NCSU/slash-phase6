@@ -106,7 +106,7 @@ class scrape_target(Thread):
             List of items from the dict
         """
         params = {
-            'api_key': 'xxx',
+            'api_key': 'A4A1B22ED3624F6686CA28225FC08E20',
             'type': 'search',
             'search_term': self.query,
         }
@@ -123,6 +123,9 @@ class scrape_target(Thread):
                     'title': data["search_results"][i]['product']["title"],
                     "price": data["search_results"][i]['offers']["primary"]["price"],
                     'link': data["search_results"][i]['product']["link"],
+                    "rating": data["search_results"][i]['product']["rating"] if 'rating' in data["search_results"][i][
+                        'product'].keys() else 0,
+                    "relevantItems": [data["related_queries"][j]['query'] for j in range(len(data["related_queries"]))],
                     }
             items.append(item)
         # data = requests.get(api_url, headers=headers).json()
@@ -152,6 +155,8 @@ class scrape_target(Thread):
         # items = json.dumps(api_result.json())
         # for i in range()
         #     items["seasrch_results"]
+
+        items = list(sorted(items, key=lambda x: x['rating'], reverse=True))
 
         self.result = items
 
