@@ -106,7 +106,7 @@ class scrape_target(Thread):
             List of items from the dict
         """
         params = {
-            'api_key': 'A4A1B22ED3624F6686CA28225FC08E20',
+            'api_key': 'xxx',
             'type': 'search',
             'search_term': self.query,
         }
